@@ -11,9 +11,9 @@ In Unity, use one of these menu entries:
 - `Tools/Water Foam Prototype/Create Self Contained Demo In Current Scene`
 - `Tools/Water Foam Prototype/Prepare Current Scene For World Height Water`
 
-`Build Demo Scene` creates `Assets/WaterFoamPrototype/Scenes/WaterFoam2DDemo.unity` with:
+`Build Demo Scene` creates `Assets/ShortHikeStylePrototype/WaterFoam/Scenes/WaterFoam2DDemo.unity` with:
 
-- a transparent water plane using `WaterFoamPrototype/RoystanToonWater`
+- a transparent water plane using `ShortHikeStylePrototype/WaterFoam/RoystanToonWater`
 - a sloped island and sea floor that produce depth-based water color
 - half-submerged posts, rocks, and a bobbing test sphere that show contact foam
 - a camera with URP depth texture enabled

@@ -2,7 +2,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.RenderGraphModule;
 using UnityEngine.Rendering.Universal;
 
-namespace WaterFoamPrototype
+namespace ShortHikeStylePrototype.WaterFoam
 {
     public sealed class WaterFoamNormalsTextureFeature : ScriptableRendererFeature
     {

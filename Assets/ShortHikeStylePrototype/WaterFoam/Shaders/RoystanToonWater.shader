@@ -1,4 +1,4 @@
-Shader "WaterFoamPrototype/RoystanToonWater"
+Shader "ShortHikeStylePrototype/WaterFoam/RoystanToonWater"
 {
     Properties
     {

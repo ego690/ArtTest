@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace WaterFoamPrototype
+namespace ShortHikeStylePrototype.WaterFoam
 {
     [DisallowMultipleComponent]
     public sealed class WaterFoamDemoMotion : MonoBehaviour

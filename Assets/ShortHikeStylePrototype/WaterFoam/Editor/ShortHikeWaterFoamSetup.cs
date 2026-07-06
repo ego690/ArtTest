@@ -7,17 +7,17 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
-namespace WaterFoamPrototype.Editor
+namespace ShortHikeStylePrototype.WaterFoam.Editor
 {
-    public static class WaterFoamPrototypeSetup
+    public static class ShortHikeWaterFoamSetup
     {
-        const string Root = "Assets/WaterFoamPrototype";
+        const string Root = "Assets/ShortHikeStylePrototype/WaterFoam";
         const string MaterialsRoot = Root + "/Materials";
         const string MeshesRoot = Root + "/Meshes";
         const string ScenesRoot = Root + "/Scenes";
         const string TexturesRoot = Root + "/Textures";
         const string ScenePath = ScenesRoot + "/WaterFoam2DDemo.unity";
-        const string RebuildMarkerPath = "Temp/WaterFoamPrototypeRebuild.flag";
+        const string RebuildMarkerPath = "Temp/ShortHikeWaterFoamRebuild.flag";
         const string RoystanFoamNoisePath = TexturesRoot + "/T_Roystan_FoamNoise.png";
         const string RoystanDistortionPath = TexturesRoot + "/T_Roystan_DistortionRG.png";
         const string RendererPath = "Assets/Settings/PC_Renderer.asset";
@@ -149,7 +149,7 @@ namespace WaterFoamPrototype.Editor
 
         static Material CreateWaterMaterial()
         {
-            Shader shader = Shader.Find("WaterFoamPrototype/RoystanToonWater");
+            Shader shader = Shader.Find("ShortHikeStylePrototype/WaterFoam/RoystanToonWater");
             if (shader == null)
                 shader = Shader.Find("Universal Render Pipeline/Unlit");
 

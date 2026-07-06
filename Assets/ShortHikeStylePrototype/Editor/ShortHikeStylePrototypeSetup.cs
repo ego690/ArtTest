@@ -69,7 +69,7 @@ namespace ShortHikeStylePrototype.Editor
         public static void BuildWaterFoamMergeDemo()
         {
             EnsureFolders();
-            WaterFoamPrototype.Editor.WaterFoamPrototypeSetup.EnsureRoystanRuntimeAssets();
+            global::ShortHikeStylePrototype.WaterFoam.Editor.ShortHikeWaterFoamSetup.EnsureRoystanRuntimeAssets();
 
             Material grass = CreateToonMaterial("M_SH_Grass", new Color(0.48f, 0.68f, 0.30f), new Color(0.24f, 0.42f, 0.22f), new Color(0.92f, 0.86f, 0.56f));
             Material sand = CreateToonMaterial("M_SH_Sand", new Color(0.83f, 0.72f, 0.43f), new Color(0.54f, 0.45f, 0.28f), new Color(1.0f, 0.92f, 0.62f));
@@ -78,7 +78,7 @@ namespace ShortHikeStylePrototype.Editor
             Material trunk = CreateToonMaterial("M_SH_Trunk", new Color(0.55f, 0.34f, 0.22f), new Color(0.30f, 0.22f, 0.16f), new Color(0.86f, 0.62f, 0.40f));
             Material cloth = CreateToonMaterial("M_SH_CharacterCoat", new Color(0.88f, 0.34f, 0.22f), new Color(0.52f, 0.19f, 0.16f), new Color(1.0f, 0.72f, 0.44f));
             Material body = CreateToonMaterial("M_SH_CharacterBody", new Color(0.97f, 0.78f, 0.46f), new Color(0.56f, 0.38f, 0.24f), new Color(1.0f, 0.94f, 0.65f));
-            Material water = WaterFoamPrototype.Editor.WaterFoamPrototypeSetup.LoadCurrentRoystanWaterMaterial();
+            Material water = global::ShortHikeStylePrototype.WaterFoam.Editor.ShortHikeWaterFoamSetup.LoadCurrentRoystanWaterMaterial();
             Mesh islandMesh = CreateIslandMesh();
 
             CreateScene(islandMesh, grass, sand, rock, leaves, trunk, cloth, body, water, WaterFoamMergeScenePath, "ShortHikeStyleWaterFoamDemo", true, false);
