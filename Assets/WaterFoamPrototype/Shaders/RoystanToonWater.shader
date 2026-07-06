@@ -2,8 +2,8 @@ Shader "WaterFoamPrototype/RoystanToonWater"
 {
     Properties
     {
-        _ShallowColor ("Shallow Color", Color) = (0.36, 0.92, 0.86, 0.72)
-        _DeepColor ("Deep Color", Color) = (0.05, 0.32, 0.60, 0.86)
+        _ShallowColor ("Shallow Color", Color) = (0.36, 0.92, 0.86, 1)
+        _DeepColor ("Deep Color", Color) = (0.05, 0.32, 0.60, 1)
         _DepthMaxDistance ("Depth Max Distance", Range(0.05, 8)) = 2.4
         _Alpha ("Water Alpha", Range(0, 1)) = 0.78
 
@@ -174,7 +174,7 @@ Shader "WaterFoamPrototype/RoystanToonWater"
                 float fresnel = pow(saturate(1.0 - dot(viewDirWS, surfaceNormalWS)), 3.0) * _ReflectionStrength;
                 waterColor = lerp(waterColor, _ReflectionColor.rgb, fresnel);
 
-                float alpha = saturate(lerp(_ShallowColor.a, _DeepColor.a, depth01) * _Alpha + foam * 0.18);
+                float alpha = saturate(_Alpha + foam * 0.18);
                 float4 water = float4(waterColor, alpha);
                 float4 foamColor = float4(_FoamColor.rgb, foam * _FoamColor.a);
                 return AlphaBlend(foamColor, water);

@@ -153,8 +153,8 @@ namespace WaterFoamPrototype.Editor
             if (distortion != null)
                 material.SetTexture("_DistortionTex", distortion);
 
-            material.SetColor("_ShallowColor", new Color(0.40f, 0.92f, 0.84f, 0.70f));
-            material.SetColor("_DeepColor", new Color(0.06f, 0.31f, 0.62f, 0.88f));
+            material.SetColor("_ShallowColor", new Color(0.40f, 0.92f, 0.84f, 1f));
+            material.SetColor("_DeepColor", new Color(0.06f, 0.31f, 0.62f, 1f));
             material.SetFloat("_DepthMaxDistance", 2.1f);
             material.SetFloat("_Alpha", 0.82f);
             material.SetColor("_FoamColor", new Color(0.95f, 1.0f, 0.88f, 1f));
