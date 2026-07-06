@@ -23,6 +23,7 @@ namespace ShortHikeStylePrototype
         [SerializeField, Range(0.25f, 8f)] float edgeStrength = 3.2f;
         [SerializeField, Range(0f, 1f)] float outlineOpacity = 0.86f;
         [SerializeField, Range(0.5f, 2.5f)] float edgeSampleDistance = 1f;
+        [SerializeField] bool compositeBeforeTransparents;
         [SerializeField] Color letterboxColor = new Color(0.55f, 0.78f, 0.88f, 1f);
         [SerializeField] Vector2Int currentRenderTextureSize;
 
@@ -33,6 +34,7 @@ namespace ShortHikeStylePrototype
         public float EdgeStrength => edgeStrength;
         public float OutlineOpacity => outlineOpacity;
         public float EdgeSampleDistance => edgeSampleDistance;
+        public bool CompositeBeforeTransparents => compositeBeforeTransparents;
         public Color LetterboxColor => letterboxColor;
 
         public Vector2Int CurrentRenderTextureSize

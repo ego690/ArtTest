@@ -29,7 +29,7 @@ namespace ShortHikeStylePrototype
                 character.Rotate(Vector3.up, turnSpeed * Time.deltaTime, Space.World);
             }
 
-            if (waterMaterial != null)
+            if (waterMaterial != null && waterMaterial.HasProperty("_TimeOffset"))
                 waterMaterial.SetFloat("_TimeOffset", time);
         }
     }

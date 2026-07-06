@@ -8,19 +8,24 @@ Shader "WaterFoamPrototype/RoystanToonWater"
         _Alpha ("Water Alpha", Range(0, 1)) = 0.78
 
         _FoamColor ("Foam Color", Color) = (0.96, 1.0, 0.90, 1)
-        _FoamTex ("Foam Noise", 2D) = "white" {}
+        _FoamTex ("Surface Noise", 2D) = "white" {}
         _FoamMinDistance ("Foam Min Distance", Range(0.01, 3)) = 0.12
         _FoamMaxDistance ("Foam Max Distance", Range(0.01, 3)) = 0.78
         _FoamCutoff ("Foam Cutoff", Range(0, 1)) = 0.58
         _FoamSoftness ("Foam Softness", Range(0.001, 0.4)) = 0.055
-        _FoamNoiseScale ("Foam Noise Scale", Range(0.1, 40)) = 7.0
-        _FoamSpeed ("Foam Speed", Vector) = (0.055, 0.025, -0.035, 0.04)
+        _FoamDisplayThreshold ("Foam Display Threshold", Range(0, 1)) = 0.5
+        _FoamNoiseScale ("Foam Noise Scale", Range(0.001, 40)) = 7.0
+        _FoamVariationStrength ("Foam Anti Tiling Strength", Range(0, 1)) = 0.65
+        _FoamVariationScale ("Foam Variation Scale", Range(0.2, 4)) = 1.73
+        _SurfaceNoiseScroll ("Surface Noise Scroll Amount", Vector) = (0.03, 0.03, 0, 0)
+        [HideInInspector] _FoamSpeed ("Legacy Foam Speed", Vector) = (0.055, 0.025, -0.035, 0.04)
 
         _SurfaceFoamAmount ("Open Water Foam Amount", Range(0, 1)) = 0.16
         _SurfaceFoamCutoff ("Open Water Foam Cutoff", Range(0, 1)) = 0.78
 
-        _DistortionTex ("Distortion Texture", 2D) = "gray" {}
-        _DistortionStrength ("Distortion Strength", Range(0, 0.25)) = 0.055
+        _DistortionTex ("Surface Distortion", 2D) = "gray" {}
+        _SurfaceDistortionAmount ("Surface Distortion Amount", Range(0, 1)) = 0.27
+        [HideInInspector] _DistortionStrength ("Legacy Distortion Strength", Range(0, 0.25)) = 0.055
         _DistortionScale ("Distortion Scale", Range(0.1, 40)) = 4.0
         _DistortionSpeed ("Distortion Speed", Vector) = (0.03, -0.02, 0, 0)
 
@@ -88,12 +93,17 @@ Shader "WaterFoamPrototype/RoystanToonWater"
                 float _FoamMaxDistance;
                 float _FoamCutoff;
                 float _FoamSoftness;
+                float _FoamDisplayThreshold;
                 float _FoamNoiseScale;
+                float _FoamVariationStrength;
+                float _FoamVariationScale;
+                float4 _SurfaceNoiseScroll;
                 float4 _FoamSpeed;
 
                 float _SurfaceFoamAmount;
                 float _SurfaceFoamCutoff;
 
+                float _SurfaceDistortionAmount;
                 float _DistortionStrength;
                 float _DistortionScale;
                 float4 _DistortionSpeed;
@@ -126,14 +136,18 @@ Shader "WaterFoamPrototype/RoystanToonWater"
             {
                 float timeValue = _Time.y;
                 float2 distortionUv = uv * _DistortionScale + _DistortionSpeed.xy * timeValue;
-                float2 distortion = SAMPLE_TEXTURE2D(_DistortionTex, sampler_DistortionTex, distortionUv).rg * 2.0 - 1.0;
+                float2 distortSample = (SAMPLE_TEXTURE2D(_DistortionTex, sampler_DistortionTex, distortionUv).rg * 2.0 - 1.0) * _SurfaceDistortionAmount;
 
-                float2 foamUvA = uv * _FoamNoiseScale + _FoamSpeed.xy * timeValue + distortion * _DistortionStrength;
-                float2 foamUvB = uv * (_FoamNoiseScale * 0.53) + _FoamSpeed.zw * timeValue - distortion.yx * _DistortionStrength * 0.7;
+                float2 noiseUv = uv * _FoamNoiseScale + _SurfaceNoiseScroll.xy * timeValue + distortSample;
+                float foamA = SAMPLE_TEXTURE2D(_FoamTex, sampler_FoamTex, noiseUv).r;
 
-                float foamA = SAMPLE_TEXTURE2D(_FoamTex, sampler_FoamTex, foamUvA).r;
-                float foamB = SAMPLE_TEXTURE2D(_FoamTex, sampler_FoamTex, foamUvB).g;
-                return saturate(foamA * 0.72 + foamB * 0.46);
+                float2 rotatedUv = float2(uv.x * 0.62 - uv.y * 0.78, uv.x * 0.78 + uv.y * 0.62);
+                float2 variationDistortionUv = rotatedUv * (_DistortionScale * 0.73) - _DistortionSpeed.yx * timeValue * 0.61;
+                float2 variationDistortSample = (SAMPLE_TEXTURE2D(_DistortionTex, sampler_DistortionTex, variationDistortionUv).rg * 2.0 - 1.0) * _SurfaceDistortionAmount;
+                float2 variationNoiseUv = rotatedUv * (_FoamNoiseScale * _FoamVariationScale) - _SurfaceNoiseScroll.yx * timeValue * 0.79 + variationDistortSample;
+                float foamB = SAMPLE_TEXTURE2D(_FoamTex, sampler_FoamTex, variationNoiseUv).r;
+
+                return lerp(foamA, saturate((foamA + foamB) * 0.5), _FoamVariationStrength);
             }
 
             float4 AlphaBlend(float4 top, float4 bottom)
@@ -174,9 +188,11 @@ Shader "WaterFoamPrototype/RoystanToonWater"
                 float fresnel = pow(saturate(1.0 - dot(viewDirWS, surfaceNormalWS)), 3.0) * _ReflectionStrength;
                 waterColor = lerp(waterColor, _ReflectionColor.rgb, fresnel);
 
-                float alpha = saturate(_Alpha + foam * 0.18);
+                float visibleFoam = step(_FoamDisplayThreshold, foam);
+
+                float alpha = saturate(_Alpha + visibleFoam * 0.18);
                 float4 water = float4(waterColor, alpha);
-                float4 foamColor = float4(_FoamColor.rgb, foam * _FoamColor.a);
+                float4 foamColor = float4(_FoamColor.rgb, visibleFoam * _FoamColor.a);
                 return AlphaBlend(foamColor, water);
             }
             ENDHLSL

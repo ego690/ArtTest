@@ -17,6 +17,7 @@ namespace ShortHikeStylePrototype.Editor
         const string MeshesRoot = Root + "/Meshes";
         const string ScenesRoot = Root + "/Scenes";
         const string ScenePath = ScenesRoot + "/ShortHikeStyleDemo.unity";
+        const string WaterFoamMergeScenePath = ScenesRoot + "/ShortHikeStyleWaterFoamDemo.unity";
         const string RebuildMarkerPath = "Temp/ShortHikeStylePrototypeRebuild.flag";
 
         static readonly Color SkyColor = new Color(0.58f, 0.78f, 0.88f, 1f);
@@ -57,11 +58,34 @@ namespace ShortHikeStylePrototype.Editor
             Material water = CreateWaterMaterial();
             Mesh islandMesh = CreateIslandMesh();
 
-            CreateScene(islandMesh, grass, sand, rock, leaves, trunk, cloth, body, water);
+            CreateScene(islandMesh, grass, sand, rock, leaves, trunk, cloth, body, water, ScenePath, "ShortHikeStyleDemo", false, true);
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
             Debug.Log("Short Hike style prototype scene built at " + ScenePath);
+        }
+
+        [MenuItem("Tools/Short Hike Style Prototype/Build Water Foam Merge Demo")]
+        public static void BuildWaterFoamMergeDemo()
+        {
+            EnsureFolders();
+            WaterFoamPrototype.Editor.WaterFoamPrototypeSetup.EnsureRoystanRuntimeAssets();
+
+            Material grass = CreateToonMaterial("M_SH_Grass", new Color(0.48f, 0.68f, 0.30f), new Color(0.24f, 0.42f, 0.22f), new Color(0.92f, 0.86f, 0.56f));
+            Material sand = CreateToonMaterial("M_SH_Sand", new Color(0.83f, 0.72f, 0.43f), new Color(0.54f, 0.45f, 0.28f), new Color(1.0f, 0.92f, 0.62f));
+            Material rock = CreateToonMaterial("M_SH_Rock", new Color(0.56f, 0.56f, 0.46f), new Color(0.34f, 0.38f, 0.34f), new Color(0.86f, 0.82f, 0.66f));
+            Material leaves = CreateToonMaterial("M_SH_Leaves", new Color(0.24f, 0.58f, 0.35f), new Color(0.12f, 0.35f, 0.28f), new Color(0.76f, 0.78f, 0.35f));
+            Material trunk = CreateToonMaterial("M_SH_Trunk", new Color(0.55f, 0.34f, 0.22f), new Color(0.30f, 0.22f, 0.16f), new Color(0.86f, 0.62f, 0.40f));
+            Material cloth = CreateToonMaterial("M_SH_CharacterCoat", new Color(0.88f, 0.34f, 0.22f), new Color(0.52f, 0.19f, 0.16f), new Color(1.0f, 0.72f, 0.44f));
+            Material body = CreateToonMaterial("M_SH_CharacterBody", new Color(0.97f, 0.78f, 0.46f), new Color(0.56f, 0.38f, 0.24f), new Color(1.0f, 0.94f, 0.65f));
+            Material water = WaterFoamPrototype.Editor.WaterFoamPrototypeSetup.LoadCurrentRoystanWaterMaterial();
+            Mesh islandMesh = CreateIslandMesh();
+
+            CreateScene(islandMesh, grass, sand, rock, leaves, trunk, cloth, body, water, WaterFoamMergeScenePath, "ShortHikeStyleWaterFoamDemo", true, false);
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            Debug.Log("Short Hike + Roystan water foam merge scene built at " + WaterFoamMergeScenePath);
         }
 
         static void EnsureFolders()
@@ -216,13 +240,58 @@ namespace ShortHikeStylePrototype.Editor
             Material trunk,
             Material cloth,
             Material body,
-            Material water)
+            Material water,
+            string scenePath,
+            string sceneName,
+            bool useRoystanWater,
+            bool addToBuild)
         {
+            Scene activeScene = SceneManager.GetActiveScene();
+            if (activeScene.IsValid() && activeScene.path == scenePath)
+            {
+                ClearScene(activeScene);
+                CreateDemoObjects(islandMesh, grass, sand, rock, leaves, trunk, cloth, body, water, useRoystanWater);
+                EditorSceneManager.SaveScene(activeScene, scenePath);
+                if (addToBuild)
+                    AddSceneToBuild(scenePath);
+                return;
+            }
+
             Scene previousActiveScene = SceneManager.GetActiveScene();
             Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
             EditorSceneManager.SetActiveScene(scene);
-            scene.name = "ShortHikeStyleDemo";
+            scene.name = sceneName;
 
+            CreateDemoObjects(islandMesh, grass, sand, rock, leaves, trunk, cloth, body, water, useRoystanWater);
+
+            EditorSceneManager.SaveScene(scene, scenePath);
+            if (addToBuild)
+                AddSceneToBuild(scenePath);
+
+            if (previousActiveScene.IsValid())
+                EditorSceneManager.SetActiveScene(previousActiveScene);
+
+            EditorSceneManager.CloseScene(scene, true);
+        }
+
+        static void ClearScene(Scene scene)
+        {
+            foreach (GameObject root in scene.GetRootGameObjects())
+                Object.DestroyImmediate(root);
+        }
+
+        static void CreateDemoObjects(
+            Mesh islandMesh,
+            Material grass,
+            Material sand,
+            Material rock,
+            Material leaves,
+            Material trunk,
+            Material cloth,
+            Material body,
+            Material water,
+            bool useRoystanWater)
+        {
             GameObject cameraObject = new GameObject("Main Camera");
             cameraObject.tag = "MainCamera";
             var camera = cameraObject.AddComponent<Camera>();
@@ -236,13 +305,17 @@ namespace ShortHikeStylePrototype.Editor
 
             var cameraData = cameraObject.AddComponent<UniversalAdditionalCameraData>();
             cameraData.renderPostProcessing = false;
+            cameraData.requiresDepthTexture = useRoystanWater;
+            cameraData.requiresColorTexture = useRoystanWater;
             cameraData.antialiasing = AntialiasingMode.None;
             var pixelCamera = cameraObject.AddComponent<ShortHikePixelCamera>();
             Shader edgeComposite = Shader.Find("Hidden/ShortHikeStylePrototype/LowResEdgeComposite");
-            if (edgeComposite != null)
+            if (edgeComposite != null || useRoystanWater)
             {
                 var pixelCameraSerialized = new SerializedObject(pixelCamera);
-                pixelCameraSerialized.FindProperty("edgeCompositeShader").objectReferenceValue = edgeComposite;
+                if (edgeComposite != null)
+                    pixelCameraSerialized.FindProperty("edgeCompositeShader").objectReferenceValue = edgeComposite;
+                pixelCameraSerialized.FindProperty("compositeBeforeTransparents").boolValue = useRoystanWater;
                 pixelCameraSerialized.ApplyModifiedPropertiesWithoutUndo();
             }
             var orbit = cameraObject.AddComponent<ShortHikeOrbitCamera>();
@@ -256,11 +329,22 @@ namespace ShortHikeStylePrototype.Editor
             GameObject sandRing = CreateCylinder("Soft Sand Rim", new Vector3(0f, -0.08f, 0f), new Vector3(7.1f, 0.08f, 7.1f), sand, 32);
             sandRing.transform.SetParent(worldRoot.transform, true);
 
+            if (useRoystanWater)
+            {
+                GameObject seaFloor = GameObject.CreatePrimitive(PrimitiveType.Plane);
+                seaFloor.name = "Roystan Depth Reference Sea Floor";
+                seaFloor.transform.SetParent(worldRoot.transform, false);
+                seaFloor.transform.position = new Vector3(0f, -1.18f, 0f);
+                seaFloor.transform.localScale = new Vector3(7.0f, 1f, 7.0f);
+                seaFloor.GetComponent<MeshRenderer>().sharedMaterial = sand;
+                Object.DestroyImmediate(seaFloor.GetComponent<Collider>());
+            }
+
             GameObject waterPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-            waterPlane.name = "Flat Graphic Ocean";
+            waterPlane.name = useRoystanWater ? "Roystan Screen Depth Ocean" : "Flat Graphic Ocean";
             waterPlane.transform.SetParent(worldRoot.transform, false);
-            waterPlane.transform.position = new Vector3(0f, -0.16f, 0f);
-            waterPlane.transform.localScale = new Vector3(5.2f, 1f, 5.2f);
+            waterPlane.transform.position = useRoystanWater ? new Vector3(0f, -0.03f, 0f) : new Vector3(0f, -0.16f, 0f);
+            waterPlane.transform.localScale = useRoystanWater ? new Vector3(6.2f, 1f, 6.2f) : new Vector3(5.2f, 1f, 5.2f);
             waterPlane.GetComponent<MeshRenderer>().sharedMaterial = water;
             Object.DestroyImmediate(waterPlane.GetComponent<Collider>());
 
@@ -290,14 +374,6 @@ namespace ShortHikeStylePrototype.Editor
 
             cameraObject.transform.position = new Vector3(-8.8f, 7.6f, -9.6f);
             cameraObject.transform.LookAt(new Vector3(0f, 0.65f, 0f));
-
-            AddSceneToBuild(ScenePath);
-            EditorSceneManager.SaveScene(scene, ScenePath);
-
-            if (previousActiveScene.IsValid())
-                EditorSceneManager.SetActiveScene(previousActiveScene);
-
-            EditorSceneManager.CloseScene(scene, true);
         }
 
         static void CreateTreeCluster(Transform parent, Material leaves, Material trunk)
@@ -517,8 +593,13 @@ namespace ShortHikeStylePrototype.Editor
         static void AddSceneToBuild(string scenePath)
         {
             var scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
-            if (scenes.Exists(s => s.path == scenePath))
+            int existingIndex = scenes.FindIndex(s => s.path == scenePath);
+            if (existingIndex >= 0)
+            {
+                scenes[existingIndex] = new EditorBuildSettingsScene(scenePath, true);
+                EditorBuildSettings.scenes = scenes.ToArray();
                 return;
+            }
 
             scenes.Add(new EditorBuildSettingsScene(scenePath, true));
             EditorBuildSettings.scenes = scenes.ToArray();

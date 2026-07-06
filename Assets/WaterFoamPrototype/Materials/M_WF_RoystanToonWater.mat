@@ -34,24 +34,29 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 1
-    - _DepthMaxDistance: 2.1
-    - _DistortionScale: 4.8
+    - _DepthMaxDistance: 0.7
+    - _DistortionScale: 1.1
     - _DistortionStrength: 0.197
-    - _FoamCutoff: 0.87
-    - _FoamMaxDistance: 0.94
-    - _FoamMinDistance: 0.09
-    - _FoamNoiseScale: 0.6
-    - _FoamSoftness: 0.19
-    - _NormalFoamStrength: 0.21
+    - _FoamCutoff: 0.75
+    - _FoamDisplayThreshold: 0.12
+    - _FoamMaxDistance: 0.59
+    - _FoamMinDistance: 0.17
+    - _FoamNoiseScale: 0.5
+    - _FoamSoftness: 0.149
+    - _FoamVariationScale: 0.45
+    - _FoamVariationStrength: 1
+    - _NormalFoamStrength: 0.1
     - _ReflectionStrength: 0
-    - _SurfaceFoamAmount: 0.38
-    - _SurfaceFoamCutoff: 0.9
+    - _SurfaceDistortionAmount: 0.61
+    - _SurfaceFoamAmount: 0.25
+    - _SurfaceFoamCutoff: 1
     m_Colors:
     - _DeepColor: {r: 0.06, g: 0.31, b: 0.62, a: 1}
-    - _DistortionSpeed: {r: 0.025, g: -0.018, b: 0, a: 0}
+    - _DistortionSpeed: {r: -0.08, g: -0.1, b: 0, a: 0}
     - _FoamColor: {r: 0.95, g: 1, b: 0.88, a: 1}
     - _FoamSpeed: {r: 0.2, g: 0.1, b: -0.025, a: 0.035}
     - _ReflectionColor: {r: 0.8, g: 0.95, b: 1, a: 1}
     - _ShallowColor: {r: 0.4, g: 0.92, b: 0.84, a: 1}
+    - _SurfaceNoiseScroll: {r: 0.16, g: 0.26, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

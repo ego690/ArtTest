@@ -17,10 +17,7 @@ namespace ShortHikeStylePrototype
 
         public override void Create()
         {
-            pass = new LowResolutionPass
-            {
-                renderPassEvent = RenderPassEvent.AfterRenderingPostProcessing
-            };
+            pass = new LowResolutionPass();
         }
 
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
@@ -42,6 +39,9 @@ namespace ShortHikeStylePrototype
 
             int scale = Mathf.Max(1, controller.LowResolutionScale > 0 ? controller.LowResolutionScale : fallbackLowResolutionScale);
             pass.Setup(controller, shader, scale);
+            pass.renderPassEvent = controller.CompositeBeforeTransparents
+                ? RenderPassEvent.BeforeRenderingTransparents
+                : RenderPassEvent.AfterRenderingPostProcessing;
             renderer.EnqueuePass(pass);
         }
 

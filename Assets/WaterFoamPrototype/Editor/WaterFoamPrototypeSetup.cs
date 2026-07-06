@@ -90,6 +90,25 @@ namespace WaterFoamPrototype.Editor
             Debug.Log("This prototype now includes a Roystan-style screen-depth water demo. Use Build Demo Scene to create it.");
         }
 
+        public static void EnsureRoystanRuntimeAssets()
+        {
+            EnsureFolders();
+            EnsureRoystanTextures();
+            EnsureNormalsTextureFeature();
+            AssetDatabase.SaveAssets();
+        }
+
+        public static Material LoadCurrentRoystanWaterMaterial()
+        {
+            EnsureRoystanRuntimeAssets();
+
+            Material material = AssetDatabase.LoadAssetAtPath<Material>(MaterialsRoot + "/M_WF_RoystanToonWater.mat");
+            if (material != null)
+                return material;
+
+            return CreateWaterMaterial();
+        }
+
         static void EnsureFolders()
         {
             foreach (string folder in new[] { Root, MaterialsRoot, MeshesRoot, ScenesRoot, TexturesRoot, Root + "/Shaders", Root + "/Scripts", Root + "/Editor" })
@@ -162,10 +181,15 @@ namespace WaterFoamPrototype.Editor
             material.SetFloat("_FoamMaxDistance", 0.82f);
             material.SetFloat("_FoamCutoff", 0.58f);
             material.SetFloat("_FoamSoftness", 0.045f);
+            material.SetFloat("_FoamDisplayThreshold", 0.5f);
             material.SetFloat("_FoamNoiseScale", 5.7f);
+            material.SetFloat("_FoamVariationStrength", 0.65f);
+            material.SetFloat("_FoamVariationScale", 1.73f);
+            material.SetVector("_SurfaceNoiseScroll", new Vector4(0.03f, 0.03f, 0f, 0f));
             material.SetVector("_FoamSpeed", new Vector4(0.04f, 0.02f, -0.025f, 0.035f));
             material.SetFloat("_SurfaceFoamAmount", 0.0f);
             material.SetFloat("_SurfaceFoamCutoff", 0.80f);
+            material.SetFloat("_SurfaceDistortionAmount", 0.27f);
             material.SetFloat("_DistortionStrength", 0.045f);
             material.SetFloat("_DistortionScale", 3.2f);
             material.SetVector("_DistortionSpeed", new Vector4(0.025f, -0.018f, 0f, 0f));
