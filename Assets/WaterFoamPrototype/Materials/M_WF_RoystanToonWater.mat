@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_WF_RoystanToonWater
+  m_Shader: {fileID: 4800000, guid: db24c1de7b4d1874992ac6924710e6f5, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DistortionTex:
+        m_Texture: {fileID: 2800000, guid: 098854a95f3243c4898898fae11e0a45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FoamTex:
+        m_Texture: {fileID: 2800000, guid: 3c56610e193999b49b1fa750fe44d4b6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alpha: 0.82
+    - _DepthMaxDistance: 2.1
+    - _DistortionScale: 13.6
+    - _DistortionStrength: 0.088
+    - _FoamCutoff: 0.75
+    - _FoamMaxDistance: 0.01
+    - _FoamMinDistance: 0.14
+    - _FoamNoiseScale: 4.2
+    - _FoamSoftness: 0.099
+    - _NormalFoamStrength: 0
+    - _ReflectionStrength: 0
+    - _SurfaceFoamAmount: 0.28
+    - _SurfaceFoamCutoff: 0.74
+    m_Colors:
+    - _DeepColor: {r: 0.06, g: 0.31, b: 0.62, a: 0.88}
+    - _DistortionSpeed: {r: 0.025, g: -0.018, b: 0, a: 0}
+    - _FoamColor: {r: 0.95, g: 1, b: 0.88, a: 1}
+    - _FoamSpeed: {r: 0.4, g: 0.2, b: -0.025, a: 0.035}
+    - _ReflectionColor: {r: 0.8, g: 0.95, b: 1, a: 1}
+    - _ShallowColor: {r: 0.4, g: 0.92, b: 0.84, a: 0.7}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

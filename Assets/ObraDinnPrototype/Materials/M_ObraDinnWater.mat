@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_ObraDinnWater
+  m_Shader: {fileID: 4800000, guid: 3f01f08b46349e34aad9ebf2b105cb5d, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _BaseGray: 0.2
+    - _DarkLineStrength: 0.08
+    - _DebugMode: 1
+    - _FoamScale: 7.5
+    - _FoamSoftness: 0.22
+    - _FoamSpeed: 0.22
+    - _FoamStrength: 1.35
+    - _FoamThreshold: 0.48
+    - _FresnelPower: 2.4
+    - _FresnelStrength: 0.65
+    - _GlintStrength: 0.85
+    - _HighlightGray: 0.96
+    - _LightStrength: 1.15
+    - _LineFrequency: 4.2
+    - _LineStrength: 0.9
+    - _MidGray: 0.46
+    - _RippleScale: 26
+    - _RippleStrength: 0.26
+    - _SpecularPower: 22
+    - _SpecularStrength: 2.1
+    - _WaveScale: 5.5
+    - _WaveSpeed: 0.38
+    - _WaveStrength: 0.58
+    m_Colors: []
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

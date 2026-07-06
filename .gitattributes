@@ -1,0 +1,28 @@
+* text=auto
+
+# Unity YAML/text assets
+*.asmdef text eol=lf
+*.cginc text eol=lf
+*.compute text eol=lf
+*.controller text eol=lf
+*.cs text eol=lf
+*.hlsl text eol=lf
+*.inputactions text eol=lf
+*.json text eol=lf
+*.mat text eol=lf
+*.meta text eol=lf
+*.prefab text eol=lf
+*.shader text eol=lf
+*.unity text eol=lf
+*.asset text eol=lf
+
+# Binary assets
+*.fbx binary
+*.jpg binary
+*.jpeg binary
+*.mp3 binary
+*.ogg binary
+*.png binary
+*.psd binary
+*.tga binary
+*.wav binary

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_ObraDinnPost
+  m_Shader: {fileID: 4800000, guid: 49454c91f164b2848a9ec639774f55b2, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _USELIGHTEDGECOLOR_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BlueNoiseTex:
+        m_Texture: {fileID: 2800000, guid: f2f19beda421c074ab9e3f0b902a3da8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BlueNoiseWeight: 0.82
+    - _Brightness: 0.02
+    - _Contrast: 1.45
+    - _DepthEdgeScale: 42
+    - _EdgeStrength: 0.72
+    - _FaceBlueNoiseWeight: 0.14
+    - _FaceMatrixScale: 1.4
+    - _Gamma: 0.82
+    - _NormalEdgeScale: 4
+    - _OffsetStrength: 1
+    - _PixelScale: 1
+    - _ThresholdBias: 0
+    - _ToneFieldHatchAngle: 0.62
+    - _ToneFieldHatchStrength: 0.05
+    - _ToneFieldScale: 42
+    - _ToneFieldStrength: 0.08
+    - _UseLightEdgeColor: 1
+    - _WorldDitherScale: 36
+    - _WorldDitherWeight: 0.68
+    - _WorldTriplanarSharpness: 4
+    m_Colors:
+    - _DarkColor: {r: 0.035, g: 0.032, b: 0.026, a: 1}
+    - _DarkEdgeColor: {r: 0.035, g: 0.032, b: 0.026, a: 1}
+    - _FaceMatrixOffset: {r: 3, g: 5, b: 0, a: 0}
+    - _LightColor: {r: 0.91, g: 0.84, b: 0.66, a: 1}
+    - _LightEdgeColor: {r: 0.91, g: 0.84, b: 0.66, a: 1}
+    - _RotationOffset: {r: 0, g: -0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
