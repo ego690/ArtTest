@@ -34,11 +34,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 1
-    - _DepthMaxDistance: 0.7
+    - _DepthMaxDistance: 0.9
     - _DistortionScale: 1.1
     - _DistortionStrength: 0.197
     - _FoamCutoff: 0.75
-    - _FoamDisplayThreshold: 0.12
+    - _FoamDisplayThreshold: 0.24
     - _FoamMaxDistance: 0.59
     - _FoamMinDistance: 0.17
     - _FoamNoiseScale: 0.5
