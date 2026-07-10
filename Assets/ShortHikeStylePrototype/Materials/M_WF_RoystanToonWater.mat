@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_WF_RoystanToonWater
+  m_Shader: {fileID: 4800000, guid: db24c1de7b4d1874992ac6924710e6f5, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _USEVORONOIWATER_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DistortionTex:
+        m_Texture: {fileID: 2800000, guid: 098854a95f3243c4898898fae11e0a45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FoamTex:
+        m_Texture: {fileID: 2800000, guid: 3c56610e193999b49b1fa750fe44d4b6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Alpha: 0.98
+    - _DepthMaxDistance: 1.42
+    - _DistortionScale: 0.4
+    - _DistortionStrength: 0.197
+    - _FoamCutoff: 0.75
+    - _FoamDisplayThreshold: 0.24
+    - _FoamMaxDistance: 0.59
+    - _FoamMinDistance: 0.25
+    - _FoamNoiseScale: 0.5
+    - _FoamSoftness: 0.149
+    - _FoamVariationScale: 0.45
+    - _FoamVariationStrength: 1
+    - _NormalFoamStrength: 0.18
+    - _ReflectionStrength: 0.15
+    - _RefractionBlend: 0.11
+    - _RefractionDepthFade: 0.8
+    - _RefractionStrength: 0.0055
+    - _RefractionWaterlineFade: 0.34
+    - _SurfaceDistortionAmount: 0.61
+    - _SurfaceFoamAmount: 0.25
+    - _SurfaceFoamCutoff: 1
+    - _UseVoronoiWater: 1
+    - _VoronoiCausticDepthFade: 12
+    - _VoronoiCausticOpacity: 0
+    - _VoronoiCausticStrength: 4
+    - _VoronoiColorBlend: 1
+    - _VoronoiDistortionScale: 10
+    - _VoronoiDistortionScaleFrequency: 0
+    - _VoronoiDistortionStrength: 10
+    - _VoronoiDistortionStrengthFrequency: 0
+    - _VoronoiLineSoftness: 0
+    - _VoronoiLineWidth: 0.02
+    - _VoronoiScale: 0.5
+    - _VoronoiSurfaceOpacity: 0.11
+    m_Colors:
+    - _DeepColor: {r: 0.06, g: 0.31, b: 0.62, a: 1}
+    - _DistortionSpeed: {r: -0.08, g: -0.1, b: 0, a: 0}
+    - _FoamColor: {r: 0.81446534, g: 0.9772867, b: 1, a: 1}
+    - _FoamSpeed: {r: 0.2, g: 0.1, b: -0.025, a: 0.035}
+    - _ReflectionColor: {r: 0, g: 0.8759904, b: 1, a: 1}
+    - _ShallowColor: {r: 0, g: 0.43362045, b: 0.92156863, a: 1}
+    - _SurfaceNoiseScroll: {r: 0.16, g: 0.26, b: 0, a: 0}
+    - _VoronoiCausticColor: {r: 6.7732506, g: 6.7732506, b: 6.7732506, a: 1}
+    - _VoronoiDarkColor: {r: 0, g: 0.29025492, b: 0.72955966, a: 1}
+    - _VoronoiLightColor: {r: 0, g: 0.7919073, b: 1, a: 1}
+    - _VoronoiScroll: {r: 0.002, g: 0.001, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

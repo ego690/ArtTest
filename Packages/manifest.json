@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.ahd2.tod-system": "file:com.ahd2.tod-system",
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
     "com.unity.ai.navigation": "2.0.12",
     "com.unity.collab-proxy": "2.12.4",

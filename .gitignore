@@ -32,7 +32,13 @@ Thumbs.db
 .vs/
 .vscode/
 .idea/
+<<<<<<< ours
+<<<<<<< ours
 
 # Local verification artifacts
 .unityverify*/
 *.log
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs

@@ -106,7 +106,7 @@ namespace ShortHikeStylePrototype
 
                 TextureDesc compositeDesc = new TextureDesc(lowDesc)
                 {
-                    name = "Short Hike Low Resolution Edge Composite"
+                    name = "Short Hike Low Resolution Composite"
                 };
 
                 TextureDesc outputDesc = new TextureDesc(sourceDesc)
@@ -135,14 +135,8 @@ namespace ShortHikeStylePrototype
                 Material material = EnsureEdgeMaterial();
                 if (material != null)
                 {
-                    material.SetColor("_OutlineColor", controller.OutlineColor);
-                    material.SetFloat("_EdgeThreshold", controller.EdgeThreshold);
-                    material.SetFloat("_EdgeStrength", controller.EdgeStrength);
-                    material.SetFloat("_OutlineOpacity", controller.OutlineOpacity);
-                    material.SetFloat("_EdgeSampleDistance", controller.EdgeSampleDistance);
-
                     var edgeParameters = new RenderGraphUtils.BlitMaterialParameters(lowColor, composite, material, 0);
-                    renderGraph.AddBlitPass(edgeParameters, "Short Hike Low Resolution Edge Composite");
+                    renderGraph.AddBlitPass(edgeParameters, "Short Hike Low Resolution Composite");
                 }
                 else
                 {

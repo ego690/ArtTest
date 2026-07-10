@@ -18,22 +18,12 @@ namespace ShortHikeStylePrototype
 
         [SerializeField, FormerlySerializedAs("pixelScale"), Range(1, 12)] int lowResolutionScale = 3;
         [SerializeField] Shader edgeCompositeShader;
-        [SerializeField] Color outlineColor = new Color(0.16f, 0.27f, 0.30f, 1f);
-        [SerializeField, Range(0.01f, 1f)] float edgeThreshold = 0.18f;
-        [SerializeField, Range(0.25f, 8f)] float edgeStrength = 3.2f;
-        [SerializeField, Range(0f, 1f)] float outlineOpacity = 0.86f;
-        [SerializeField, Range(0.5f, 2.5f)] float edgeSampleDistance = 1f;
         [SerializeField] bool compositeBeforeTransparents;
         [SerializeField] Color letterboxColor = new Color(0.55f, 0.78f, 0.88f, 1f);
         [SerializeField] Vector2Int currentRenderTextureSize;
 
         public int LowResolutionScale => Mathf.Clamp(lowResolutionScale, 1, 12);
         public Shader EdgeCompositeShader => edgeCompositeShader;
-        public Color OutlineColor => outlineColor;
-        public float EdgeThreshold => edgeThreshold;
-        public float EdgeStrength => edgeStrength;
-        public float OutlineOpacity => outlineOpacity;
-        public float EdgeSampleDistance => edgeSampleDistance;
         public bool CompositeBeforeTransparents => compositeBeforeTransparents;
         public Color LetterboxColor => letterboxColor;
 
@@ -57,10 +47,6 @@ namespace ShortHikeStylePrototype
         void OnValidate()
         {
             lowResolutionScale = Mathf.Clamp(lowResolutionScale, 1, 12);
-            edgeThreshold = Mathf.Max(0.01f, edgeThreshold);
-            edgeStrength = Mathf.Max(0.25f, edgeStrength);
-            outlineOpacity = Mathf.Clamp01(outlineOpacity);
-            edgeSampleDistance = Mathf.Clamp(edgeSampleDistance, 0.5f, 2.5f);
         }
 
         void ResetCameraOutput()

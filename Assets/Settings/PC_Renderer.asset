@@ -33,6 +33,27 @@ MonoBehaviour:
   m_Name: Water Foam Normals Texture Request
   m_EditorClassIdentifier: 
   m_Active: 1
+--- !u!114 &-4486442561416638293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c845a4670d681a46ad45532b21e3488, type: 3}
+  m_Name: VolumetricFogRendererFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  volumetricFogSettings:
+    enable: 0
+    renderPassEvent: 100
+    densityAndLightingComputeShader: {fileID: 7200000, guid: 9068eedc2333d524bba83267d923d5a9, type: 3}
+    fogDensity: 0.2
+    fogFarPlaneDistance: 100
+    fogExtinctonCoeffient: 2
+    fogStartHeight: -50
 --- !u!114 &-3694410194562504418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +102,8 @@ MonoBehaviour:
   - {fileID: 2292881565400303532}
   - {fileID: -3694410194562504418}
   - {fileID: -5140205998113377462}
-  m_RendererFeatureMap: ad6b866f10d7b46c4ebe9cb537df4bb1991a9c51705b4d500eacb9dd5de0366fac07bab1a2f3d11f1e29857a80d1bacc4ab31ef2e051aab8
+  - {fileID: -4486442561416638293}
+  m_RendererFeatureMap: ad6b866f10d7b46c4ebe9cb537df4bb1991a9c51705b4d500eacb9dd5de0366fac07bab1a2f3d11f1e29857a80d1bacc4ab31ef2e051aab8ab5091b542f4bcc1
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
