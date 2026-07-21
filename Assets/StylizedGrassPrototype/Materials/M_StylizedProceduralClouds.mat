@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_StylizedProceduralClouds
+  m_Shader: {fileID: 4800000, guid: 00d661a86caf42f8af0d80cd6f2b7f91, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BlueNoiseTex:
+        m_Texture: {fileID: 2800000, guid: f2f19beda421c074ab9e3f0b902a3da8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CloudMask:
+        m_Texture: {fileID: 2800000, guid: ad5fb86ef35946d4b1db781fcc024d85, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.25
+    - _BlueNoiseBlend: 1
+    - _BlueNoiseScale: 4
+    - _Brightness: 1.05
+    - _CardEdgeFadeEnd: 0.35
+    - _CardEdgeFadeStart: 0.08
+    - _ColorVariation: 0.1
+    - _HighlightThreshold: 0.73
+    - _ShadowThreshold: 0.48
+    m_Colors:
+    - _CloudBaseColor: {r: 0.78, g: 0.86, b: 0.92, a: 1}
+    - _CloudHighlightColor: {r: 1, g: 0.98, b: 0.92, a: 1}
+    - _CloudShadowColor: {r: 0.48, g: 0.6, b: 0.7, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

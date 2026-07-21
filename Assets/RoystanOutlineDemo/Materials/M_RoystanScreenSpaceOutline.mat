@@ -26,13 +26,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _DebugMode: 0
-    - _DepthEdgeOpacity: 0.9
     - _DepthNormalThreshold: 0.48
     - _DepthNormalThresholdScale: 5.5
     - _DepthThreshold: 0.012
-    - _NormalEdgeOpacity: 0.28
-    - _NormalThreshold: 0.36
-    - _Scale: 3
+    - _NormalThreshold: 0.22
+    - _Scale: 2
     m_Colors:
     - _OutlineColor: {r: 0.025, g: 0.022, b: 0.018, a: 0.92}
   m_BuildTextureStacks: []

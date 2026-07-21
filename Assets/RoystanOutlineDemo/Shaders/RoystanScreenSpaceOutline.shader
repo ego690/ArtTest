@@ -6,8 +6,6 @@ Shader "Hidden/RoystanOutlineDemo/ScreenSpaceOutline"
         _Scale ("Scale", Range(1, 6)) = 2
         _DepthThreshold ("Depth Threshold", Range(0.001, 0.1)) = 0.012
         _NormalThreshold ("Normal Threshold", Range(0.001, 1)) = 0.18
-        _DepthEdgeOpacity ("Depth Edge Opacity", Range(0, 1)) = 1
-        _NormalEdgeOpacity ("Normal Edge Opacity", Range(0, 1)) = 0.35
         _DepthNormalThreshold ("Depth Normal Threshold", Range(0, 1)) = 0.55
         _DepthNormalThresholdScale ("Depth Normal Threshold Scale", Range(1, 12)) = 6
         _DebugMode ("Debug Mode", Range(0, 3)) = 0
@@ -46,8 +44,6 @@ Shader "Hidden/RoystanOutlineDemo/ScreenSpaceOutline"
                 float _Scale;
                 float _DepthThreshold;
                 float _NormalThreshold;
-                float _DepthEdgeOpacity;
-                float _NormalEdgeOpacity;
                 float _DepthNormalThreshold;
                 float _DepthNormalThresholdScale;
                 float _DebugMode;
@@ -135,7 +131,7 @@ Shader "Hidden/RoystanOutlineDemo/ScreenSpaceOutline"
                 float depthThreshold = _DepthThreshold * max(depth0, 0.0001) * depthMultiplier;
                 float depthEdgeMask = edgeDepth > depthThreshold ? 1.0 : 0.0;
                 float normalEdgeMask = edgeNormal > _NormalThreshold ? 1.0 : 0.0;
-                float edge = max(depthEdgeMask * _DepthEdgeOpacity, normalEdgeMask * _NormalEdgeOpacity) * step(0.5, outlineMask);
+                float edge = max(depthEdgeMask, normalEdgeMask) * step(0.5, outlineMask);
 
                 float3 source = SAMPLE_TEXTURE2D_X(_BlitTexture, sampler_PointClamp, uv).rgb;
 

@@ -34,21 +34,21 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.98
-    - _DepthMaxDistance: 1.42
+    - _Alpha: 1
+    - _DepthMaxDistance: 0.1
     - _DistortionScale: 0.4
     - _DistortionStrength: 0.197
     - _FoamCutoff: 0.75
     - _FoamDisplayThreshold: 0.24
     - _FoamMaxDistance: 0.59
-    - _FoamMinDistance: 0.25
+    - _FoamMinDistance: 0.11
     - _FoamNoiseScale: 0.5
-    - _FoamSoftness: 0.149
+    - _FoamSoftness: 0.161
     - _FoamVariationScale: 0.45
     - _FoamVariationStrength: 1
-    - _NormalFoamStrength: 0.18
-    - _ReflectionStrength: 0.15
-    - _RefractionBlend: 0.11
+    - _NormalFoamStrength: 0.52
+    - _ReflectionStrength: 0.3
+    - _RefractionBlend: 0.48
     - _RefractionDepthFade: 0.8
     - _RefractionStrength: 0.0055
     - _RefractionWaterlineFade: 0.34

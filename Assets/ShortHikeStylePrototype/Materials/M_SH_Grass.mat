@@ -37,9 +37,9 @@ Material:
     - _Glossiness: 48
     - _HighlightStrength: 0.345
     - _OutlineWidth: 0.018
-    - _RimAmount: 0.58
-    - _RimStrength: 0.18
-    - _RimThreshold: 0.38
+    - _RimAmount: 0.75
+    - _RimStrength: 0.101
+    - _RimThreshold: 2
     - _ShadowStrength: 0.071
     - _SpecularSize: 0.16
     - _SpecularStrength: 0

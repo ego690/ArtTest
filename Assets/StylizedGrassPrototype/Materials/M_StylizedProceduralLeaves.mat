@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_StylizedProceduralLeaves
+  m_Shader: {fileID: 4800000, guid: 7f53837064ba14c409b94d9ce145e52a, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _LeafMask:
+        m_Texture: {fileID: 2800000, guid: c3a4e11066bd35447a4addadcbf344cf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.38
+    - _BottomRampEnd: 0.8
+    - _BottomRampStart: 0.13
+    - _BrightMultiplier: 2.1
+    - _CrownBottom: 2.4
+    - _CrownTop: 4.8
+    - _DarkMultiplier: 2
+    - _DarkThreshold: 0.38
+    - _DistributionSeed: 17
+    - _EmissionStrength: 1.45
+    - _FinalHueShift: 0
+    - _FinalSaturation: 1
+    - _FinalValue: 1
+    - _LeafWindAmplitudeMultiplier: 1
+    - _LeafWindDisplacementMultiplier: 0.35
+    - _LeafWindFrequencyMultiplier: 1.5
+    - _LeafWindRotationMultiplier: 0.5
+    - _LightThreshold: 0.31
+    - _NoiseBlend: 0.53
+    - _NoiseHigh: 0.83
+    - _NoiseLow: 0.4
+    - _NoiseScale: 2
+    - _ShadowReceiveStrength: 0.33
+    - _TreeHueShift: 0
+    - _TreeSaturation: 1
+    - _TreeValue: 1
+    - _WindBendCurve: 1.8
+    - _WindBendStrength: 0.82
+    - _WindDetailScale: 0.15
+    - _WindDetailStrength: 0.25
+    - _WindHeightInfluence: 0.32
+    - _WindLargeScale: 0.03
+    - _WindRotationStrength: 0.28
+    - _WindSpeed: 0.12
+    - _WindTimeOffset: 0
+    m_Colors:
+    - _BaseColor: {r: 0.085, g: 0.31, b: 0.055, a: 1}
+    - _BottomColor: {r: 0.012, g: 0.052, b: 0.018, a: 1}
+    - _FixedNormalOS: {r: 0, g: 0, b: 1, a: 0}
+    - _HighlightColor: {r: 0.49162248, g: 0.8867924, b: 0.08644817, a: 1}
+    - _NoiseColor: {r: 0.18, g: 0.45, b: 0.065, a: 1}
+    - _NoiseOffset: {r: 0.68, g: 0, b: 0, a: 0}
+    - _ShadowColor: {r: 0.018, g: 0.075, b: 0.025, a: 1}
+    - _WindDirection: {r: 0.8, g: 0, b: 0.35, a: 0}
+    - _WindNoiseAxisScale: {r: 0.45, g: 2.4, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

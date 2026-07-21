@@ -35,10 +35,10 @@ Material:
     - _FogEnd: 34
     - _FogStart: 12
     - _Glossiness: 48
-    - _HighlightStrength: 0.42
+    - _HighlightStrength: 0.2
     - _OutlineWidth: 0.018
     - _RimAmount: 0.58
-    - _RimStrength: 0.18
+    - _RimStrength: 0
     - _RimThreshold: 0.38
     - _ShadowStrength: 0.134
     - _SpecularSize: 0.16

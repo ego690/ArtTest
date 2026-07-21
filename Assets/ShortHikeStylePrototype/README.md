@@ -10,9 +10,10 @@ This prototype is a standalone test of an A Short Hike-like rendering recipe:
 - Two-to-three band toon lighting.
 - Flat, graphic water with procedural wave and foam lines.
 
-Use `Tools/Short Hike Style Prototype/Build Demo Scene` to rebuild:
+Maintain the current prototype scenes directly in Unity:
 
-`Assets/ShortHikeStylePrototype/Scenes/ShortHikeStyleDemo.unity`
+- `Assets/ShortHikeStylePrototype/Scenes/ShortHikeStyleWaterFoamDemo.unity`
+- `Assets/ShortHikeStylePrototype/Scenes/ShortHikeStyleWaterFoamGrassDemo.unity`
 
 The main runtime pieces are:
 
